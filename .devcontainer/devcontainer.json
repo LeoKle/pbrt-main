@@ -1,0 +1,19 @@
+{
+    "name": "C++ PBRT Dev Container",
+    "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "ms-vscode.cmake-tools",
+                "twxs.cmake"
+            ],
+            "settings": {
+                "C_Cpp.default.cppStandard": "c++17"
+            }
+        }
+    },
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+    "workspaceFolder": "/workspace",
+    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y cmake libgl1-mesa-dev libx11-dev xorg-dev libwayland-dev wayland-protocols libxkbcommon-dev libimath-dev"
+}

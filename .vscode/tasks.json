@@ -1,0 +1,60 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Configure PBRT (CMake)",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-S",
+                ".",
+                "-B",
+                "build"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/pbrt-v4/"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "detail": "Runs cmake configuration for PBRT"
+        },
+        {
+            "label": "Build PBRT",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "build",
+                "--config",
+                "Release",
+                "-j"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/pbrt-v4/"
+            },
+            "dependsOn": [
+                "Configure PBRT (CMake)"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Compiles PBRT using the build directory"
+        },
+        {
+            "label": "Clean PBRT Build",
+            "type": "shell",
+            "command": "rm",
+            "args": [
+                "-rf",
+                "build"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/pbrt-v4/"
+            },
+            "problemMatcher": [],
+            "detail": "Removes the build directory for a fresh rebuild"
+        }
+    ]
+}
